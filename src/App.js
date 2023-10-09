@@ -1,7 +1,14 @@
-import { useState } from "react";
-import breakSoundFile from "./alarm.mp3";
+import { useState, useEffect } from "react";
+import breakSoundFile from "./Assests/alarm.mp3";
 import "./App.css";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
+
+import {
+  AiFillPlusCircle,
+  AiFillMinusCircle,
+  AiFillGithub,
+} from "react-icons/ai";
+import { BsFillPauseCircleFill, BsFillPlayCircleFill } from "react-icons/bs";
+import { RiRefreshFill } from "react-icons/ri";
 
 function App() {
   const [displayTime, setDisplayTime] = useState(25 * 60);
@@ -9,7 +16,20 @@ function App() {
   const [sessionTime, setSessionTime] = useState(25 * 60);
   const [timerOn, setTimerOn] = useState(false);
   const [onBreak, setOnBreak] = useState(false);
+  const [currentDate, setCurrentDate] = useState(new Date());
   const breakAudio = new Audio(breakSoundFile);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = currentDate.toLocaleDateString(undefined, options);
+
+  useEffect(() => {
+    const timerID = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(timerID);
+    };
+  }, []);
 
   const playBreakSound = () => {
     breakAudio.currentTime = 0;
@@ -30,15 +50,22 @@ function App() {
     if (type === "break") {
       if (
         (breakTime <= 60 && amount < 0) ||
-        (breakTime >= 3600 && amount > 0)
+        (breakTime >= 3600 && amount > 0) ||
+        timerOn ||
+        onBreak
       ) {
+        return;
+      }
+      if (timerOn) {
         return;
       }
       setBreakTime((prev) => prev + amount);
     } else {
       if (
         (sessionTime <= 60 && amount < 0) ||
-        (sessionTime >= 3600 && amount > 0)
+        (sessionTime >= 3600 && amount > 0) ||
+        timerOn ||
+        onBreak
       ) {
         return;
       }
@@ -76,43 +103,77 @@ function App() {
     setDisplayTime(25 * 60);
     setBreakTime(5 * 60);
     setSessionTime(25 * 60);
-    playPause();
+    setOnBreak(false);
+    if (timerOn) {
+      playPause();
+    }
+  };
+
+  const playPauseStyle = {
+    fontSize: "30px",
+    color: "#ca1b1b",
+    cursor: "pointer",
   };
 
   return (
-    <div
-      style={{
-        margin: "0 200px",
-      }}
-    >
-      <div>
-        <Length
-          titleid={"break-label"}
-          title={"break length"}
-          changeTime={changeTime}
-          type={"break"}
-          time={breakTime}
-          // formatTime={formatTime}
-          timerOn={timerOn}
-        />
-        <Length
-          titleid={"session-label"}
-          title={"session length"}
-          changeTime={changeTime}
-          type={"session"}
-          time={sessionTime}
-          // formatTime={formatTime}
-          timerOn={timerOn}
-        />
+    <div className="container">
+      <div className="clock">
+        <div className="controller">
+          <Length
+            titleid={"break-label"}
+            title={"break length"}
+            changeTime={changeTime}
+            type={"break"}
+            time={breakTime}
+            // formatTime={formatTime}
+            timerOn={timerOn}
+          />
+          <Length
+            titleid={"session-label"}
+            title={"session length"}
+            changeTime={changeTime}
+            type={"session"}
+            time={sessionTime}
+            // formatTime={formatTime}
+            timerOn={timerOn}
+          />
+        </div>
+        <div className="display">
+          <h3 id="timer-label" style={onBreak ? { color: "#ca1b1b" } : {}}>
+            {onBreak ? "break !" : "session"}{" "}
+          </h3>
+          <p id="time-left">{formatTime(displayTime)}</p>
+          <div className="display-btns">
+            {timerOn ? (
+              <BsFillPauseCircleFill
+                style={playPauseStyle}
+                id="start_stop"
+                onClick={playPause}
+              />
+            ) : (
+              <BsFillPlayCircleFill
+                style={playPauseStyle}
+                id="start_stop"
+                onClick={playPause}
+              />
+            )}
+            <RiRefreshFill
+              id="reset"
+              onClick={resetTime}
+              style={{ fontSize: "30px", cursor: "pointer", color: "green" }}
+            />
+          </div>
+        </div>
+        <div className="date">
+          <p>{formattedDate} </p>
+        </div>
       </div>
-      <h3 id="timer-label">{onBreak ? "break" : "session"} </h3>
-      <h1 id="time-left">{formatTime(displayTime)}</h1>
-      <button id="start_stop" onClick={playPause}>
-        {timerOn ? "pause" : "play"}
-      </button>
-      <button id="reset" onClick={resetTime}>
-        reset
-      </button>
+      <div className="credit">
+        coded & designed by amaan shamim khan
+        <a rel="noreferrer" href="https://github.com/AmaanShamim/TC-react" target="_blank">
+          <AiFillGithub id="git" />
+        </a>
+      </div>
     </div>
   );
 }
@@ -123,28 +184,22 @@ function Length({
   changeTime,
   type,
   time,
-  formatTime,
+  // formatTime,
   timerOn,
 }) {
   return (
-    <div>
+    <div className="contain-control">
       <h3 id={titleid}>{title}</h3>
-      <div>
-        <button
+      <div className="control-btns">
+        <AiFillMinusCircle
           id={`${type}-decrement`}
-          disabled={timerOn ? true : false}
           onClick={() => changeTime(-60, type)}
-        >
-          -
-        </button>
-        <h3 id={`${type}-length`}>{time / 60}</h3>
-        <button
+        />
+        <p id={`${type}-length`}>{time / 60}</p>
+        <AiFillPlusCircle
           id={`${type}-increment`}
-          disabled={timerOn ? true : false}
           onClick={() => changeTime(60, type)}
-        >
-          +
-        </button>
+        />
       </div>
     </div>
   );

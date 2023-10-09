@@ -1,6 +1,113 @@
+@font-face {
+  font-family: "digital-7";
+  src: url("../src/Assests/digital-7.ttf") format("truetype");
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0px;
+}
+
+body {
+  user-select: none;
+  background-image: linear-gradient(317deg, #2f2f2f, #8c8c8d);
+}
+
+.container {
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.clock {
+  color: white;
+  padding: 50px 0;
+  background-image: url(./Assests/Clock-background.png);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column-reverse;
+  text-align: center;
+  height: 450px;
+  width: 560px;
+  border-radius: 28px;
+}
+
+.controller {
+  text-transform: uppercase;
+  display: flex;
+  width: 80%;
+  border: 6px solid #414141;
+  padding: 6px;
+  justify-content: space-around;
+  border-radius: 100px;
+}
+
+.contain-control {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.display {
+  width: 50%;
+}
+
+#timer-label {
+  font-family: "digital-7";
+  text-transform: uppercase;
+  font-size: 26px;
+}
+
+#time-left {
+  font-size: 900%;
+  font-family: "digital-7";
+}
+
+.display-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.control-btns {
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-family: "digital-7";
+  background-color: hsl(0deg 0% 0% / 50%);
+  border-radius: 40px;
+}
+
+svg {
+  cursor: pointer;
+}
+
+.date {
+  color: hwb(0deg 100% 0% / 70%);
+  font-family: "digital-7";
+  font-size: 18px;
+  text-align: right;
+  width: 100%;
+  padding-right: 12%;
+}
+
+.credit {
+  text-transform: capitalize;
+  font-size: 15px;
+  font-family: "Satisfy", cursive;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#git {
+  color: #020b28;
+  font-size: 26px;
 }

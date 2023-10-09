@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Task Spinner
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Task Spinner features three main components: Break Length, Session Length, and a Display. Each of these components includes two buttons.
+## Break Length Component
 
-## Available Scripts
+The Break Length component allows you to set the duration of your breaks. It includes the following elements:
 
-In the project directory, you can run:
+- **Increase Button**: This button allows you to increment the break length duration.
+- **Decrease Button**: This button allows you to decrement the break length duration.
+- **Display**: This displays the current break length duration in minutes.
 
-### `npm start`
+## Session Length Component
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The Session Length component allows you to set the duration of your work or session. It includes the following elements:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Increase Button**: This button allows you to increment the session length duration.
+- **Decrease Button**: This button allows you to decrement the session length duration.
+- **Display Span**: Thi displays the current session length duration in minutes.
 
-### `npm test`
+## Display Component
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The Display component serves as the central information display for the timer/clock. It includes the following elements:
 
-### `npm run build`
+- **Clock Display**: This displays the remaining time for the current session or break. It counts down from the set session or break length.
+- **Status Indicator**: This indicates whether the timer is in "Session" or "Break" mode.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Start by setting the desired Break Length and Session Length using their respective buttons.
+2. The Display component will show the current session length and indicate that the timer is in "Session" mode.
+3. Press the Start button to begin the timer countdown for the session.
+4. When the session ends, the timer will automatically switch to "Break" mode and display the break length. You can manually start the break timer by pressing a button.
+5. Repeat the process as needed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This digital timer/clock with these three components provides a convenient way to manage your work and break intervals effectively.
