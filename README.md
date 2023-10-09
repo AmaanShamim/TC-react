@@ -29,7 +29,7 @@ The Display component serves as the central information display for the timer/cl
 1. Start by setting the desired Break Length and Session Length using their respective buttons.
 2. The Display component will show the current session length and indicate that the timer is in "Session" mode.
 3. Press the Start button to begin the timer countdown for the session.
-4. When the session ends, the timer will automatically switch to "Break" mode and display the break length. You can manually start the break timer by pressing a button.
+4. When the session ends, the timer will automatically switch to "Break" mode and display the break length.
 5. Repeat the process as needed.
 
 This digital timer/clock with these three components provides a convenient way to manage your work and break intervals effectively.
