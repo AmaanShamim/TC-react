@@ -6,6 +6,8 @@ import {
   AiFillPlusCircle,
   AiFillMinusCircle,
   AiFillGithub,
+  AiFillInfoCircle,
+  AiFillCloseCircle,
 } from "react-icons/ai";
 import { BsFillPauseCircleFill, BsFillPlayCircleFill } from "react-icons/bs";
 import { RiRefreshFill } from "react-icons/ri";
@@ -17,6 +19,7 @@ function App() {
   const [timerOn, setTimerOn] = useState(false);
   const [onBreak, setOnBreak] = useState(false);
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [info, setInfo] = useState(false);
   const breakAudio = new Audio(breakSoundFile);
   const options = { year: "numeric", month: "long", day: "numeric" };
   const formattedDate = currentDate.toLocaleDateString(undefined, options);
@@ -116,65 +119,79 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <div className="clock">
-        <div className="controller">
-          <Length
-            titleid={"break-label"}
-            title={"break length"}
-            changeTime={changeTime}
-            type={"break"}
-            time={breakTime}
-            // formatTime={formatTime}
-            timerOn={timerOn}
-          />
-          <Length
-            titleid={"session-label"}
-            title={"session length"}
-            changeTime={changeTime}
-            type={"session"}
-            time={sessionTime}
-            // formatTime={formatTime}
-            timerOn={timerOn}
-          />
-        </div>
-        <div className="display">
-          <h3 id="timer-label" style={onBreak ? { color: "#ca1b1b" } : {}}>
-            {onBreak ? "break !" : "session"}{" "}
-          </h3>
-          <p id="time-left">{formatTime(displayTime)}</p>
-          <div className="display-btns">
-            {timerOn ? (
-              <BsFillPauseCircleFill
-                style={playPauseStyle}
-                id="start_stop"
-                onClick={playPause}
-              />
-            ) : (
-              <BsFillPlayCircleFill
-                style={playPauseStyle}
-                id="start_stop"
-                onClick={playPause}
-              />
-            )}
-            <RiRefreshFill
-              id="reset"
-              onClick={resetTime}
-              style={{ fontSize: "30px", cursor: "pointer", color: "green" }}
+    <>
+      <div className="container">
+        <div className="clock">
+          <div className="controller">
+            <Length
+              titleid={"break-label"}
+              title={"break length"}
+              changeTime={changeTime}
+              type={"break"}
+              time={breakTime}
+              // formatTime={formatTime}
+              timerOn={timerOn}
+            />
+            <Length
+              titleid={"session-label"}
+              title={"session length"}
+              changeTime={changeTime}
+              type={"session"}
+              time={sessionTime}
+              // formatTime={formatTime}
+              timerOn={timerOn}
             />
           </div>
+          <div className="display">
+            <h3 id="timer-label" style={onBreak ? { color: "#ca1b1b" } : {}}>
+              {onBreak ? "break !" : "session"}{" "}
+            </h3>
+            <p id="time-left">{formatTime(displayTime)}</p>
+            <div className="display-btns">
+              {timerOn ? (
+                <BsFillPauseCircleFill
+                  style={playPauseStyle}
+                  id="start_stop"
+                  onClick={playPause}
+                />
+              ) : (
+                <BsFillPlayCircleFill
+                  style={playPauseStyle}
+                  id="start_stop"
+                  onClick={playPause}
+                />
+              )}
+              <RiRefreshFill
+                id="reset"
+                onClick={resetTime}
+                style={{ fontSize: "30px", cursor: "pointer", color: "green" }}
+              />
+            </div>
+          </div>
+          <div className="date">
+            <p>{formattedDate} </p>
+          </div>
         </div>
-        <div className="date">
-          <p>{formattedDate} </p>
+        <div className="credit">
+          coded & designed by amaan shamim khan
+          <a
+            rel="noreferrer"
+            href="https://github.com/AmaanShamim/TC-react"
+            target="_blank"
+          >
+            <AiFillGithub id="git" />
+          </a>
         </div>
       </div>
-      <div className="credit">
-        coded & designed by amaan shamim khan
-        <a rel="noreferrer" href="https://github.com/AmaanShamim/TC-react" target="_blank">
-          <AiFillGithub id="git" />
-        </a>
+      <div className="info-btn">
+        <AiFillInfoCircle onClick={() => {setInfo(true)}} />
       </div>
-    </div>
+      {info && (
+        <div className="info-container">
+          <Info setInfo={setInfo} />
+        </div>
+      )}
+    </>
   );
 }
 
@@ -202,6 +219,57 @@ function Length({
         />
       </div>
     </div>
+  );
+}
+
+function Info({ setInfo }) {
+  return (
+    <>
+      <div className="info-header">
+        <h1>User Manual: Task Spinner</h1>
+        <AiFillCloseCircle className="close-info-btn" onClick={() => {setInfo(false)}} />
+      </div>
+      <h2 className="heading2">Introduction</h2>
+      <p className="info-para">
+        Welcome to the User Manual for the Task Spinner, a versatile time
+        management tool designed to boost productivity by making your work or
+        study sessions more efficient and effective. This innovative device
+        features three key components: Break Length, Session Length, and
+        Display, each aimed at helping you optimize your time management for
+        better results. Whether you're aiming for efficient work periods or
+        well-deserved breaks, the Task Spinner will be your trusted companion in
+        achieving your goals.
+      </p>
+      <h2 className="heading2">Getting Started</h2>
+      <ul className="info-para">
+        <li>Powering On: Press the play button to start.</li>
+        <li>
+          Period Indicator: The display also indicates whether the timer is in
+          "Break" or "Session" mode.
+        </li>
+        <li>
+          Initial Setup: Set your desired Break Length and Session Length by
+          using the respective buttons. Use the Reset button to clear any
+          previous settings.
+        </li>
+      </ul>
+      <h2 className="heading2">Using the Timer</h2>
+      <ul className="info-para">
+        <li>
+          Break Length Component: Adjust break duration with the buttons,
+          displayed in real-time.
+        </li>
+        <li>
+          Session Length Component: Customize session duration and view it on
+          the display.
+        </li>
+        <li>Display Component: Shows countdown and session/break mode.</li>
+        <li>
+          Reset Button: It clears active session or break settings, returning
+          the Task Spinner to its initial state.
+        </li>
+      </ul>
+    </>
   );
 }
 
