@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/TC-react/static/css/main.7c1872ac.css",
-    "main.js": "/TC-react/static/js/main.9ab50995.js",
-    "static/js/787.d9182ddb.chunk.js": "/TC-react/static/js/787.d9182ddb.chunk.js",
-    "static/media/Clock-background.png": "/TC-react/static/media/Clock-background.874e0856aebc7284c2e2.png",
-    "static/media/alarm.mp3": "/TC-react/static/media/alarm.c215addcd8735fa8bb26.mp3",
-    "static/media/digital-7.ttf": "/TC-react/static/media/digital-7.79c8511a32aab83743b7.ttf",
-    "index.html": "/TC-react/index.html",
-    "main.7c1872ac.css.map": "/TC-react/static/css/main.7c1872ac.css.map",
-    "main.9ab50995.js.map": "/TC-react/static/js/main.9ab50995.js.map",
-    "787.d9182ddb.chunk.js.map": "/TC-react/static/js/787.d9182ddb.chunk.js.map"
+    "main.css": "/TaskSpinner-React/static/css/main.e5679499.css",
+    "main.js": "/TaskSpinner-React/static/js/main.280e1409.js",
+    "static/js/787.d9182ddb.chunk.js": "/TaskSpinner-React/static/js/787.d9182ddb.chunk.js",
+    "static/media/Clock-background.png": "/TaskSpinner-React/static/media/Clock-background.874e0856aebc7284c2e2.png",
+    "static/media/alarm.mp3": "/TaskSpinner-React/static/media/alarm.c215addcd8735fa8bb26.mp3",
+    "static/media/digital-7.ttf": "/TaskSpinner-React/static/media/digital-7.79c8511a32aab83743b7.ttf",
+    "index.html": "/TaskSpinner-React/index.html",
+    "main.e5679499.css.map": "/TaskSpinner-React/static/css/main.e5679499.css.map",
+    "main.280e1409.js.map": "/TaskSpinner-React/static/js/main.280e1409.js.map",
+    "787.d9182ddb.chunk.js.map": "/TaskSpinner-React/static/js/787.d9182ddb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7c1872ac.css",
-    "static/js/main.9ab50995.js"
+    "static/css/main.e5679499.css",
+    "static/js/main.280e1409.js"
   ]
 }
